@@ -1,0 +1,14 @@
+- name: install nginx
+  hosts: all
+  connection: ssh
+  gather_facts: yes
+  tasks:
+  - name: update and upgrade apt packages
+    apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 86400
+  - name: install NGINX
+    apt:
+      name: nginx
+      state: present
